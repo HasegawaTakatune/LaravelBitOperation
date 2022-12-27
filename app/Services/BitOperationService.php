@@ -11,19 +11,28 @@ class BitOperationService
 
     public static function pointSwitch(string $baseBit, string $pointBit, int $operate): string|null
     {
-        $bit = bindec($baseBit);
-        $pBit = bindec($pointBit);
+        try {
+            $bit = bindec($baseBit);
+            $pBit = bindec($pointBit);
+        } catch(Exception $e) {
+            return null;
+        }
 
         return self::_switch($bit, $pBit, $operate);
     }
 
     public static function multiSwitch(string $baseBit, array $pointBit, int $operate): string|null
     {
-        $bit = bindec($baseBit);
         $pBit = 0;
 
-        foreach ($pointBit as $key => $value) {
-            $pBit = $pBit | bindec($value);
+        try {
+            $bit = bindec($baseBit);
+
+            foreach ($pointBit as $key => $value) {
+                $pBit = $pBit | bindec($value);
+            }
+        } catch(Exception $e) {
+            return null;
         }
 
         return self::_switch($bit, $pBit, $operate);
@@ -31,26 +40,38 @@ class BitOperationService
 
     private static function _switch(int $bit, int $pBit, int $opr): string|null
     {
-        switch($opr) {
-            case self::ON:
-                return decbin($bit | $pBit);
-                break;
-            case self::OFF:
-                return decbin($bit & (~$pBit));
-                break;
-            default:
-                break;
+        try {
+            switch($opr) {
+                case self::ON:
+                    return sprintf("%08d", decbin($bit | $pBit));
+                    break;
+                case self::OFF:
+                    return sprintf("%08d", decbin($bit & (~$pBit)));
+                    break;
+                default:
+                    break;
+            }
+        } catch(Exception $e) {
+            return null;
         }
         return null;
     }
 
-    public static function allOff(string $baseBit): string
+    public static function allOff(string $baseBit): string|null
     {
-        return sprintf("%08d", decbin(bindec($baseBit) & self::ALL_OFF));
+        try {
+            return sprintf("%08d", decbin(bindec($baseBit) & self::ALL_OFF));
+        } catch(Exception $e) {
+            return null;
+        }
     }
 
-    public static function allOn(string|int $baseBit): string
+    public static function allOn(string|int $baseBit): string|null
     {
-        return sprintf("%08d", decbin(bindec($baseBit) | self::ALL_ON));
+        try {
+            return sprintf("%08d", decbin(bindec($baseBit) | self::ALL_ON));
+        } catch(Exception $e) {
+            return null;
+        }
     }
 }
