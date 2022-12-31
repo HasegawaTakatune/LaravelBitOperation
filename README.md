@@ -1,12 +1,23 @@
 # LaravelBitOperation  
+
+## 概要  
+文字列型に格納されたビット配列の指定位置に対して、ON/OFFの切り替えを行うサンプル
+＋テストコードの実装を行う
   
 ## setup  
 ```
 composer install
 ```
-  
-## test  
+.env.example -> .env
 ```
+php artisan key:generate
+```
+  
+## test    
+```
+// Mac
+php artisan test Test/Unit/BitOperationTest.php
+// win
 php artisan test Tests\Unit\BitOperationTest.php
 ```
   

@@ -19,12 +19,12 @@ class BitOperationTest extends TestCase
 
         $position = '00000100';
         $result = BitOperationService::pointSwitch($base, $position, BitOperation::ON);
-        info('position on 1', ['base' => $base, 'position' => $position, 'result' => $result, 'expected_value' => '10101110' ]);
+        info('position on 1     ', ['base' => $base, 'position' => $position, 'result' => $result, 'expected_value' => '10101110' ]);
         $this->assertEquals('10101110', $result);
 
         $position = '01000000';
         $result = BitOperationService::pointSwitch($base, $position, BitOperation::ON);
-        info('position on 2', ['base' => $base, 'position' => $position, 'result' => $result, 'expected_value' => '11101010' ]);
+        info('position on 2     ', ['base' => $base, 'position' => $position, 'result' => $result, 'expected_value' => '11101010' ]);
         $this->assertEquals('11101010', $result);
     }
 
@@ -35,12 +35,12 @@ class BitOperationTest extends TestCase
 
         $position = '00000010';
         $result = BitOperationService::pointSwitch($base, $position, BitOperation::OFF);
-        info('position off 1', ['base' => $base, 'position' => $position, 'result' => $result, 'expected_value' => '10101000' ]);
+        info('position off 1    ', ['base' => $base, 'position' => $position, 'result' => $result, 'expected_value' => '10101000' ]);
         $this->assertEquals('10101000', $result);
 
         $position = '00100000';
         $result = BitOperationService::pointSwitch($base, $position, BitOperation::OFF);
-        info('position off 2', ['base' => $base, 'position' => $position, 'result' => $result, 'expected_value' => '10001010' ]);
+        info('position off 2    ', ['base' => $base, 'position' => $position, 'result' => $result, 'expected_value' => '10001010' ]);
         $this->assertEquals('10001010', $result);
     }
 
@@ -49,7 +49,7 @@ class BitOperationTest extends TestCase
         $base = '10101010';
 
         $result = BitOperationService::allOn($base);
-        info('all on', ['base' => $base, 'result' => $result, 'expected_value' => '11111111' ]);
+        info('all on            ', ['base' => $base, 'result' => $result, 'expected_value' => '11111111' ]);
         $this->assertEquals('11111111', $result);
     }
 
@@ -58,7 +58,7 @@ class BitOperationTest extends TestCase
         $base = '10101010';
 
         $result = BitOperationService::allOff($base);
-        info('all off', ['base' => $base, 'result' => $result, 'expected_value' => '00000000' ]);
+        info('all off           ', ['base' => $base, 'result' => $result, 'expected_value' => '00000000' ]);
         $this->assertEquals('00000000', $result);
     }
 
@@ -69,12 +69,12 @@ class BitOperationTest extends TestCase
 
         $position = ['00000100', '00000001'];
         $result = BitOperationService::multiSwitch($base, $position, BitOperation::ON);
-        info('multi on 1', ['base' => $base, 'position' => $position, 'result' => $result, 'expected_value' => '10101111' ]);
+        info('multi on 1        ', ['base' => $base, 'position' => $position, 'result' => $result, 'expected_value' => '10101111' ]);
         $this->assertEquals('10101111', $result);
 
         $position = ['01000000', '00010000', '00000010', '00000001'];
         $result = BitOperationService::multiSwitch($base, $position, BitOperation::ON);
-        info('multi on 2', ['base' => $base, 'position' => $position, 'result' => $result, 'expected_value' => '11111011' ]);
+        info('multi on 2        ', ['base' => $base, 'position' => $position, 'result' => $result, 'expected_value' => '11111011' ]);
         $this->assertEquals('11111011', $result);
     }
 
@@ -85,12 +85,12 @@ class BitOperationTest extends TestCase
 
         $position = ['00001000', '00000010'];
         $result = BitOperationService::multiSwitch($base, $position, BitOperation::OFF);
-        info('multi off 1', ['base' => $base, 'position' => $position, 'result' => $result, 'expected_value' => '10100000' ]);
+        info('multi off 1       ', ['base' => $base, 'position' => $position, 'result' => $result, 'expected_value' => '10100000' ]);
         $this->assertEquals('10100000', $result);
 
         $position = ['10000000', '00100000', '00000010', '00000001'];
         $result = BitOperationService::multiSwitch($base, $position, BitOperation::OFF);
-        info('multi off 2', ['base' => $base, 'position' => $position, 'result' => $result, 'expected_value' => '00001000' ]);
+        info('multi off 2       ', ['base' => $base, 'position' => $position, 'result' => $result, 'expected_value' => '00001000' ]);
         $this->assertEquals('00001000', $result);
     }
 
