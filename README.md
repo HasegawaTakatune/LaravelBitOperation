@@ -1,8 +1,17 @@
 # LaravelBitOperation  
 
 ## 概要  
-文字列型に格納されたビット配列の指定位置に対して、ON/OFFの切り替えを行うサンプル
+文字列型に格納されたビット配列に対して、ON/OFFの切り替えを行うサンプル
 ＋テストコードの実装を行う
+
+定数群
+app\Consts\BitOperation.php
+
+ビット変換処理の実装
+app\Services\BitOperationService.php
+
+テストコード
+tests\Unit\BitOperationTest.php
   
 ## setup  
 ```
